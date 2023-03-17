@@ -11,3 +11,17 @@ body {
 #output {
   font-size: 24px;
 }
+button {
+  height: 25px;
+  color: white;
+  background-color: forestgreen;
+  border: 2px solid black;
+}
+select {
+  height: 25px;
+  font-size: 17px;
+}
+input {
+  height: 20px;
+  font-size: 17px;
+}
