@@ -10,16 +10,16 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="style.css" />
 
-    <script src="js/random-library.js"></script>
-    <script defer src="js/main.js"></script>
+    <script src="random-library.js"></script>
+    <script defer src="main.js"></script>
   </head>
 
   <body>
     <h1>Nickname Generator</h1>
     <hr />
     <p>Enter your name, make a selection from the menu and press "GO".</p>
-    <p>First name: <input /></p>
-    <p>Last name: <input /></p>
+    <p id="firstName">First name: <input /></p>
+    <p id="lastName">Last name: <input /></p>
 
     <select id="menu-select">
       <option value="displayAll">Display All Nicknames</option>
@@ -28,7 +28,7 @@
       <option value="removeName">Remove Last Nickname</option>
       <option value="removeNameI">Remove Nickname by Index</option>
     </select>
-    <button>GO</button>
+    <button id="btn">GO</button>
     <hr />
   </body>
 </html>
