@@ -1,10 +1,13 @@
 document.getElementById("btn").addEventListener("click", btnClicked);
 
-function btnClicked() {
-  let selection = document.getElementById("menu-select").value;
-  let firstname = document.getElementById("firstName");
-  let lastname = document.getElementById("lastName");
+let outputEl = document.getElementById("output");
 
+function btnClicked() {
+  let firstname = document.getElementById("firstName").value;
+  let lastname = document.getElementById("lastName").value;
+  let selection = document.getElementById("menu-select").value;
+  outputEl.innerHTML = firstname;
+  outputEl.innerHTML = lastname;
   if (selection === "displayAll") {
     display();
   } else if (selection === "randName") {
@@ -18,9 +21,7 @@ function btnClicked() {
   }
 }
 
-function display() {
-  console.log("1");
-}
+function display() {}
 
 function random() {
   console.log("2");
