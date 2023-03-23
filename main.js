@@ -1,40 +1,60 @@
 document.getElementById("btn").addEventListener("click", btnClicked);
 
 let outputEl = document.getElementById("output");
-
+let names = ["hidious", "ugly", "poor", "mean", "hateful", "godly"];
 function btnClicked() {
-  let firstname = document.getElementById("firstName").value;
-  let lastname = document.getElementById("lastName").value;
   let selection = document.getElementById("menu-select").value;
-  outputEl.innerHTML = firstname;
-  outputEl.innerHTML = lastname;
+  let firstname = document.getElementById("f").value;
+  let lastname = document.getElementById("l").value;
+
   if (selection === "displayAll") {
-    display();
+    display(names, firstname, lastname);
   } else if (selection === "randName") {
-    random();
+    random(names, firstname, lastname);
   } else if (selection === "addName") {
-    add();
+    add(names, firstname, lastname);
   } else if (selection === "removeName") {
-    remove();
+    remove(names);
   } else if (selection === "removeNameI") {
-    removeI();
+    removeI(names, firstname, lastname);
   }
 }
 
-function display() {}
-
-function random() {
-  console.log("2");
+function display(name, first, last) {
+  outputEl.innerHTML = "";
+  count = 0;
+  for (n = 0; n < name.length; n++) {
+    outputEl.innerHTML += `<div>${count}:${first} "${name[n]}" ${last} </div>`;
+    count++;
+  }
 }
 
-function add() {
-  console.log("3");
+function random(name, first, last) {
+  outputEl.innerHTML = "";
+  let rand = randomInt(0, name.length);
+  outputEl.innerHTML += `<div>${rand}: ${first} ${name[rand]} ${last} </div>`;
 }
 
-function remove() {
-  console.log("4");
+function add(name, first, last) {
+  outputEl.innerHTML = "";
+  let addname = prompt("enter a nickname to add to the list");
+  name.push(addname);
+  outputEl.innerHTML += `<div>${
+    name.length - 1
+  }: ${first} "${addname}" ${last} </div>`;
 }
 
-function removeI() {
-  console.log("5");
+function remove(name) {
+  outputEl.innerHTML = "";
+  outputEl.innerHTML += `<div> the name"${name.length - 1}: ${
+    name[name.length - 1]
+  }" was removed </div>`;
+  name.pop(name.length - 1);
+}
+
+function removeI(name, first, last) {
+  let remove = prompt("type the number of the name to remove").value;
+  outputEl.innerHTML = "";
+  outputEl.innerHTML += `<div> the name"${remove}: ${name[remove]}" was removed </div>`;
+  name.pop(remove);
 }
