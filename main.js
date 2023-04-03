@@ -16,7 +16,9 @@ function btnClicked() {
   } else if (selection === "removeName") {
     remove(names);
   } else if (selection === "removeNameI") {
-    removeI(names, firstname, lastname);
+    removeI(names);
+  } else if (selection === "removeByName") {
+    removebyname(names);
   }
 }
 
@@ -38,10 +40,14 @@ function random(name, first, last) {
 function add(name, first, last) {
   outputEl.innerHTML = "";
   let addname = prompt("enter a nickname to add to the list");
-  name.push(addname);
-  outputEl.innerHTML += `<div>${
-    name.length - 1
-  }: ${first} "${addname}" ${last} </div>`;
+  if (name.includes(addname) == false) {
+    name.push(addname);
+    outputEl.innerHTML += `<div>${
+      name.length - 1
+    }: ${first} "${addname}" ${last} has been added</div>`;
+  } else {
+    outputEl.innerHTML = `<div>name already added, please pick different name</div>`;
+  }
 }
 
 function remove(name) {
@@ -52,9 +58,23 @@ function remove(name) {
   name.pop(name.length - 1);
 }
 
-function removeI(name, first, last) {
-  let remove = prompt("type the number of the name to remove").value;
+function removeI(name) {
+  let remove = prompt("type the number of the name to remove");
   outputEl.innerHTML = "";
   outputEl.innerHTML += `<div> the name"${remove}: ${name[remove]}" was removed </div>`;
-  name.pop(remove);
+  console.log(remove);
+  name.splice(remove, 1);
+}
+
+function removebyname(name) {
+  let remove = prompt("type the number of the name to remove");
+  outputEl.innerHTML = "";
+  if (name.includes(remove) == true) {
+    outputEl.innerHTML += `<div> the name ${name.indexOf(
+      remove
+    )} "${remove}" was removed </div>`;
+    name.splice(name.indexOf(remove), 1);
+  } else {
+    outputEl.innerHTML = `<div>name does not exist, please pick different name</div>`;
+  }
 }
